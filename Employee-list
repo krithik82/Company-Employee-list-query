@@ -1,0 +1,151 @@
+#Importing required libraries
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+import pandas as pd
+#importing the dataset, reading the excel file in a data frame
+df_employee=pd.read_excel (r'employee__1_.xls')
+df_employee
+#importing the dataset, reading the excel file in a data frame
+#print the head of the data frame.
+df_employee.head(10)
+#print the tail of the data frame.
+df_employee.tail(10)
+# Checking the missing values. So No Need to drop any missing values
+df_employee.isnull().sum()
+#parse the attached employee.csv file
+#import the required library
+from bs4 import BeautifulSoup
+import xlrd
+# Define the location of the file     
+loc = (r'employee__1_.xls')    
+book = xlrd.open_workbook(r'employee__1_.xls')
+for sheet in book.sheets():
+    print (sheet.name)
+    # To open the Workbook     
+wb = xlrd.open_workbook(r'employee__1_.xls')     
+sheet = wb.sheet_by_index(0)  
+#Opening a sheet
+worksheet = wb.sheet_by_index(0)
+workbook = xlrd.open_workbook(r'employee__1_.xls',on_demand = True)
+# For row 0 and column 0     
+sheet.cell_value(0, 0)
+sheet.cell_value(0, 1) 
+sheet.cell_value(0, 2)
+sheet.cell_value(0, 3)
+sheet.cell_value(0, 4)
+# Value of 1st row and 1st column
+sheet.cell(0, 5).value
+book = xlrd.open_workbook(r'employee__1_.xls')
+book = xlrd.open_workbook(r'employee__1_.xls')
+sheet = book.sheet_by_name('employee (1)')
+print (sheet)
+sheet = book.sheet_by_name('employee (1)')
+sheet = book.sheet_by_name('employee (1)')
+print (sheet)
+print (sheet.nrows)
+range(3)
+#With the addition of the range function we can transform 101 into a list our for loop can iterate over, our script should look like the following:
+
+book = xlrd.open_workbook(r'employee__1_.xls')
+sheet = book.sheet_by_name('employee (1)')
+for i in range(sheet.nrows):
+    print (i)
+    #To get each row’s values we will use row_values, which was another method returned by dir(sheet) earlier. We can see from the row_values documentation that the method expects an index number and returns the corresponding row’s values. Update your for loop to reflect this and rerun your script:
+for i in range(sheet.nrows):
+    print (sheet.row_values(i))
+    
+    # Normalize the date fields into a standard format
+from datetime import datetime
+from sklearn.preprocessing import MinMaxScaler
+import time
+#Change dates into days
+import pandas as pd
+df_employee=pd.read_excel (r'employee__1_.xls')
+df_employee['Date of Birth'] = pd.to_datetime(df_employee['Date of Birth']).dt.day_name()
+df_employee['Date of Joining'] = pd.to_datetime(df_employee['Date of Joining']).dt.day_name()
+df_employee.head()
+
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+df_employee = pd.DataFrame(np.random.randint(1, 100, (1000, 2)), columns=['Date of Birth', 'Date of Joining'])
+df_employee.head()
+
+print (df_employee.head())
+
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+#for normalizing data
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler(feature_range=(0,1))
+import time
+from pandas import Timestamp
+df_employee=pd.read_excel (r'employee__1_.xls')
+df_employee
+
+# modules we'll use
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import datetime
+
+# set seed for reproducibility
+np.random.seed(0)
+
+
+#Normalize the date fields into a standard format
+#Converting the data type of date column to dateTime 
+df_employee['Date of Birth'] = pd.to_datetime(df_employee['Date of Birth'])
+df_employee['Date of Joining'] = pd.to_datetime(df_employee['Date of Joining'])
+print(df_employee)
+
+# check the data type of our date column
+df_employee.info()
+
+#Data Operation Using Groupby
+#group the employee list based on the field "Quarter of Joining"
+import pandas as pd
+df_employee['Date of Joining'] = pd.to_datetime(df_employee['Date of Joining'])
+df_employee['quarter'] = df_employee['Date of Joining'].dt.to_period('Q')
+print (df_employee)
+
+
+grouped=df_employee.groupby('quarter')
+print(grouped)
+df_employee.sort_values('Date of Birth')
+print(df_employee)
+
+grouped=df_employee.groupby('quarter')
+print(df_employee)
+
+df_employee.sort_values('Date of Birth')
+print(df_employee)
+
+#group the employee list based on the field "Quarter of Joining" & sorted by the field "Date of Birth"
+#Grouping and perform count over each group
+employee_new = df_employee.groupby('Date of Joining',as_index=False).apply(lambda x:x.sort_values('Date of Birth')).reset_index(drop=True)
+print(employee_new)
+
+#Print grouped employee list based on the field "Quarter of Joining" and sorted by the field "Date of Birth"
+df_employee = pd.DataFrame(df_employee, columns= ['quarter', 'First Name','Last Name'])
+print(df_employee)
+np.transpose(df_employee).shape
+print(np.transpose(df_employee).shape)
+
+print("quarter       Employee Name")
+result = df_employee[df_employee['First Name'].str[3]=='m']
+for index, row in result.iterrows():
+    print(row['quarter'],row['First Name'],str(row['Last Name']))
+    
+    df_employee = pd.DataFrame(df_employee, columns= ['quarter', 'First Name','Last Name'])
+for index, row in df_employee.iterrows():
+    print(row.to_frame().T)
+        
+    for index, ser in df_employee.iterrows():
+    print( pd.DataFrame(ser).T )
+
+    
